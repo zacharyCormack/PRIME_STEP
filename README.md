@@ -21,10 +21,10 @@ This project is relevant to a certain mathematical problem:
 > Let S(_N_) be the size of the prime connected set of N
 
 This project contains two programs:
-`PRIME_STEP`, which calculates the prime connected set of _N_ and S(_N_), and records it in the `log.hex` file, and
+`CALC`, which calculates the prime connected set of _N_ and S(_N_), and records it in the `log.hex` file, and
 `READ`, which reads the `log.hex` file.
 
-## PRIME_STEP
+## CALC
 This program calculates the number of primes in the prime connected set of _N_ in a very straightforward way:
 > Have some unsigned _X_, which starts of equal to _N_.
 > Change _X_ to a number prime connected to _X_.
