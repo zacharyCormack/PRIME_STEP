@@ -77,7 +77,8 @@ const char* explanation =
 	"\n"
 	" Let S(N) be the size of the prime connected set of N\n"
 	"\n"
-	"This program will calculate the value of S(N)\n"
+	"This program will calculate the value of S(N) and records it to the \"log.hex\" file\n"
+	"The \"log.hex\" file can be read by the READ program\n"
 ;
 
 unsigned short step(unsigned short num)
@@ -236,7 +237,7 @@ int main()
 		cout << ",\n" << reached[i];
 	}
 	pre_ask2:
-	ofstream log("log.hex");
+	ofstream log("log.hex", ios_base::app);
 	for (unsigned short i = 0; i < num_reached; i++)
 		log << (char)reached[i] << (char)(reached[i]>>8);
 	log << (char)0 << (char)0;

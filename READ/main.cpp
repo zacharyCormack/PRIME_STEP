@@ -18,7 +18,7 @@ const char* explanation =
 	"\n"
 	" Let S(N) be the size of the prime connected set of N\n"
 	"\n"
-	"The main program of this project calculates S(N) and records the prime connected set of N in the \"log.hex\" file\n"
+	"The CALC program of this project calculates S(N) and records the prime connected set of N in the \"log.hex\" file\n"
 	"This program reads the log.hex file\n"
 	"\n"
 ;
@@ -26,8 +26,19 @@ const char* explanation =
 int main()
 {
 	ifstream log ("log.hex", ifstream::binary);
+	if (!log)
+	{
+		log.open("../log.hex", ifstream::binary);
+	}
+	if (!log)
+	{
+		log.open("CALC/log.hex", ifstream::binary);
+	}
+	if (!log)
+	{
+		log.open("../CALC/log.hex", ifstream::binary);
+	}
 	if (!log) return -1;
-
 	log.seekg(0, log.end);
 	unsigned long length = log.tellg();
 	log.seekg(0, log.beg);
@@ -44,7 +55,6 @@ int main()
 	vector<unsigned> start_spots;
 	bool new_set = true;
 
-	start:
 	cout << "\e[1;1H\e[2J" << explanation;
 
 	for (unsigned short i = 0; i < length/2; i++)
@@ -71,9 +81,10 @@ int main()
 		(start_spots[i]-(i == 0 ? 0 : start_spots[i-1]))/2 <<
 		(start_spots[i]-(i == 0 ? 0 : start_spots[i-1])==UINT16_MAX*2 ? "+ " : " ") <<
 		"possibilities found coming from " <<
-		starters[i] <<
-		"\n";
+		starters[i];
 	}
+
+	cout << "\n";
 
 	ask1:
 	cout << "\nWould you like to list any of them? (1/0): ";
@@ -86,7 +97,7 @@ int main()
 	}
 	if (ans != "1")
 		goto ask1;
-	
+
 	unsigned short entry;
 	unsigned short entry_num = -1;
 
@@ -137,17 +148,17 @@ int main()
 	cout << "\n\n";
 	ask4:
 	cout << "Read another entry? (1/0): ";
-	string ans2;
-	cin >> ans2;
-	if (ans2 == "1")
+	string ans4;
+	cin >> ans4;
+	if (ans4 == "1")
 	{
-		cout << "\nDoing it again.\n\n";
-		goto start;
+		cout << "\nDoing it again.\n";
+		goto ask2;
 	}
-	if (ans2 == "0")
+	if (ans4 == "0")
 	{
 		cout << "\nAll done.\n" << "\e[1;1H\e[2J";
 		return 0;
 	}
-	goto ask2;
+	goto ask4;
 }
