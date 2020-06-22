@@ -44,7 +44,7 @@ The log reader will count the entries and ask if you would like to list any of t
 When you list, you are offered the option to concatenate if the entry exceeds 64 entries.
 Typically you should do this.
 
-# LOG
+## LOG
 The `log.hex` file is, as can be expected, a log of all the calculations done by the `PRIME_STEP` program.
 This is kept because the `PRIME_STEP function takes a while to calculate, but it's results can be easily stored for later convenience.
 
