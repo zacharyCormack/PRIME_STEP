@@ -20,6 +20,8 @@ This project is relevant to a certain mathematical problem:
 > 
 > Let S(_N_) be the size of the prime connected set of N
 
+The full math problem is called [Prepsosterous Primes](http://www.zacharycormack.net/challenge-of-jun-22-2020/ "zacharycormack.net")
+
 This project contains two programs:
 `CALC`, which calculates the prime connected set of _N_ and S(_N_), and records it in the `log.hex` file, and
 `READ`, which reads the `log.hex` file.
