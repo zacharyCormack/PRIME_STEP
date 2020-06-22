@@ -148,19 +148,19 @@ int main()
 	unsigned short reached[UINT16_MAX];
 	reached[0] = start;
 	unsigned short num_reached = 1;
-	unsigned timer = 67108864;
+	unsigned timer = 0x4000000;
 	while(timer --> 0)
 	{
-		if(timer % 16384 == 0)
+		if(timer % 0x4000 == 0)
 		{
 			cout << "\033[H" << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << "PROGRESS:\n|";
 			for (unsigned short i = 0; i < 128; i++)
 			{
-				if (i < 128 - timer/524288)
+				if (i < 128 - timer/0x80000)
 				{
 					cout << '=';
 				}
-				else if (i == 128 - timer/524288)
+				else if (i == 128 - timer/0x80000)
 				{
 					cout << '>';
 				}
@@ -169,9 +169,9 @@ int main()
 					cout << ' ';
 				}
 			}
-			if (timer > 524288)
+			if (timer > 0x80000)
 			{
-				cout << "| " << 128 - timer/524288 << " of 128";
+				cout << "| " << 0x80 - timer/0x80000 << " of 128";
 			}
 			else if (timer > 0)
 			{
@@ -210,7 +210,7 @@ int main()
 	if (ans1 != "1")
 		goto ask1;
 	cout << "\n\n";
-	if (num_reached > 64)
+	if (num_reached > 0x40)
 	{
 		cout << "There are a lot of items to list\n";
 		ask3:
@@ -228,10 +228,10 @@ int main()
 	
 	for (unsigned short i = 1; i < num_reached; i++)
 	{
-		if (i > 32 && i < num_reached - 32 && concat)
+		if (i > 0x20 && i < num_reached - 0x20 && concat)
 		{
 			cout << ",\n...";
-			i = num_reached - 32;
+			i = num_reached - 0x20;
 		}
 		cout << ",\n" << reached[i];
 	}
