@@ -140,11 +140,27 @@ unsigned short step(unsigned short num)
 
 int main()
 {
+	std::vector<unsigned short> queue_calcs;
+	bool on_queue = false;
 	start:
 	cout << "\e[1;1H\e[2J" << explanation;
 	unsigned short start;
 	cout << "\nStart at: ";
 	cin >> start;
+	queue:
+	cout << "\nWould you like to queue another calculation? (1/0): ";
+	string que_str;
+	cin >> que_str;
+	if (que_str == "1") {
+		unsigned short queue_num;
+		cout << "\nNumber to queue: ";
+		cin >> queue_num;
+		queue_calcs.push_back(queue_num);
+	}
+	if (que_str != "0")
+		goto queue;
+	calc:
+	cout << "\e[1;1H\e[2J";
 	unsigned short current = start;
 	unsigned short reached[UINT16_MAX];
 	reached[0] = start;
@@ -154,7 +170,7 @@ int main()
 	{
 		if(timer % 0x4000 == 0)
 		{
-			cout << "\033[H" << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" << "PROGRESS:\n|";
+			cout << "\033[H" << "\n" << "PROGRESS:\n|";
 			for (unsigned short i = 0; i < 128; i++)
 			{
 				if (i < 128 - timer/0x80000)
@@ -202,9 +218,11 @@ int main()
 	end:
 	cout << "\n\n" << num_reached << (num_reached==UINT16_MAX ? "+ " : " ") << "possibilities found coming from " << start << "\n\n";
 	bool concat = false;
+	string ans1;
+	if (on_queue)
+		goto pre_ask2;
 	ask1:
 	cout << "List them? (1/0): ";
-	string ans1;
 	cin >> ans1;
 	if (ans1 == "0")
 		goto pre_ask2;
@@ -242,6 +260,13 @@ int main()
 		log << (char)reached[i] << (char)(reached[i]>>8);
 	log << (char)0 << (char)0;
 	cout << "\nFile recorded in \"log.hex\" in little endian, terminated by a 0\n\n";
+	on_queue = false;
+	if (queue_calcs.size() > 0) {
+		start = queue_calcs[queue_calcs.size()-1];
+		queue_calcs.pop_back();
+		on_queue = true;
+		goto calc;
+	}
 	ask2:
 	cout << "Try another number? (1/0): ";
 	string ans2;
