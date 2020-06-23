@@ -161,6 +161,7 @@ int main()
 		goto queue;
 	calc:
 	cout << "\e[1;1H\e[2J";
+	cout << "\nCalculating: " << start;
 	unsigned short current = start;
 	unsigned short reached[UINT16_MAX];
 	reached[0] = start;
@@ -170,7 +171,7 @@ int main()
 	{
 		if(timer % 0x4000 == 0)
 		{
-			cout << "\033[H" << "\n" << "PROGRESS:\n|";
+			cout << "\033[H" << "\n\n\n" << "PROGRESS:\n|";
 			for (unsigned short i = 0; i < 128; i++)
 			{
 				if (i < 128 - timer/0x80000)
