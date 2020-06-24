@@ -88,9 +88,7 @@ unsigned short step(unsigned short num)
 	for (unsigned short i = 0; i < 54; i++)
 	{
 		if(primes[i] > sqrt(fac_num))
-		{
 			break;
-		}
 		fac:
 		if(fac_num%primes[i] == 0)
 		{
@@ -100,9 +98,7 @@ unsigned short step(unsigned short num)
 		}
 	}
 	if(fac_num > 1)
-	{
 		factors.push_back(fac_num);
-	}
 	switch (factors.size())
 	{
 	case 0:
@@ -111,28 +107,20 @@ unsigned short step(unsigned short num)
 		return num*2;
 	case 2:
 		if(rand()%2 || factors[0] == 3)
-		{
 			return num-factors[0];
-		}
 		return num-factors[1];
 	default:
 		mv:
 		unsigned short rand_num = rand() % (factors.size()*2);
-		if(rand_num%2==0)
-		{
+		if(rand()%2==0)
 			return num+factors[rand_num>>1];
-		}
 		unsigned short check = (num/factors[rand_num>>1])-1;
 		for (unsigned short i = 0; i < 54; i++)
 		{
 			if (primes[i] == check)
-			{
 				goto mv;
-			}
 			if (primes[i] > check)
-			{
 				break;
-			}
 		}
 		return num-factors[rand_num>>1];
 	}
@@ -174,43 +162,29 @@ int main()
 			for (unsigned short i = 0; i < 128; i++)
 			{
 				if (i < 128 - timer/0x80000)
-				{
 					cout << '=';
-				}
 				else if (i == 128 - timer/0x80000)
-				{
 					cout << '>';
-				}
 				else
-				{
 					cout << ' ';
-				}
 			}
 			if (timer > 0x80000)
-			{
 				cout << "| " << 0x80 - timer/0x80000 << " of 128";
-			}
 			else if (timer > 0)
-			{
 				cout << "| COMPLETE!        \n";
-			}
 		}
 		current = step(current);
 		bool new_num = true;
 		for (unsigned short i = 0; i < num_reached; i++)
-		{
 			if (reached[i] == current)
 			{
 				new_num = false;
 				break;
 			}
-		}
 		if (new_num)
 		{
 			if (num_reached == UINT16_MAX)
-			{
 				goto end;
-			}
 			reached[num_reached] = current;
 			num_reached++;
 		}

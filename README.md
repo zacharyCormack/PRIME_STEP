@@ -22,9 +22,10 @@ This project is relevant to a certain mathematical problem:
 
 The full math problem is called [Prepsosterous Primes](http://www.zacharycormack.net/challenge-of-jun-22-2020/ "zacharycormack.net")
 
-This project contains two programs:
-`CALC`, which calculates the prime connected set of _N_ and S(_N_), and records it in the `log.hex` file, and
-`READ`, which reads the `log.hex` file.
+This project contains three programs: `CALC`, `READ`, and `MOVE`
+`CALC` calculates the prime connected set of _N_ and S(_N_), and records it in the `log.hex` file.
+`READ` reads the `log.hex` file.
+`MOVE` illustrates what a prime step is interactively.
 
 ## CALC
 This program calculates the number of primes in the prime connected set of _N_ in a very straightforward way:
@@ -43,6 +44,14 @@ Each entry is terminated by a `0`, and each `unsigned` logged has 2 bytes.
 The log reader will count the entries and ask if you would like to list any of them.
 When you list, you are offered the option to concatenate if the entry exceeds 64 entries.
 Typically you should do this.
+
+## MOVE
+In the interactive move program, you choose a number to start at.
+Try _23_ for fun!
+You are then told which prime you are at currently and asked which number to step to next.
+If you choose a number not prime connected to the number you are currently at, you will be asked again.
+This not only illustrates what a prime connection *is*, but the *maze-like* structure they form, and the methods used in the `CALC` program.
+In fact, this program is nearly identical to the `CALC` program at it's core, with only a few changes to the `step` function and user interface.
 
 ## LOG
 The `log.hex` file is, as can be expected, a log of all the calculations done by the `PRIME_STEP` program.
