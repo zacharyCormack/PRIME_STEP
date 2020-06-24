@@ -47,5 +47,3 @@ Typically you should do this.
 ## LOG
 The `log.hex` file is, as can be expected, a log of all the calculations done by the `PRIME_STEP` program.
 This is kept because the `PRIME_STEP function takes a while to calculate, but it's results can be easily stored for later convenience.
-
-The `log.hex` file currently contains the entry for 23.

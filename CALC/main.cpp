@@ -141,7 +141,6 @@ unsigned short step(unsigned short num)
 int main()
 {
 	std::vector<unsigned short> queue_calcs;
-	bool on_queue = false;
 	start:
 	cout << "\e[1;1H\e[2J" << explanation;
 	unsigned short start;
@@ -220,7 +219,7 @@ int main()
 	cout << "\n\n" << num_reached << (num_reached==UINT16_MAX ? "+ " : " ") << "possibilities found coming from " << start << "\n\n";
 	bool concat = false;
 	string ans1;
-	if (on_queue)
+	if (queue_calcs.size() > 0)
 		goto pre_ask2;
 	ask1:
 	cout << "List them? (1/0): ";
@@ -261,11 +260,9 @@ int main()
 		log << (char)reached[i] << (char)(reached[i]>>8);
 	log << (char)0 << (char)0;
 	cout << "\nFile recorded in \"log.hex\" in little endian, terminated by a 0\n\n";
-	on_queue = false;
 	if (queue_calcs.size() > 0) {
 		start = queue_calcs[queue_calcs.size()-1];
 		queue_calcs.pop_back();
-		on_queue = true;
 		goto calc;
 	}
 	ask2:
