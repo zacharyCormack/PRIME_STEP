@@ -77,6 +77,7 @@ const char* explanation =
 	"\n"
 	" Let S(N) be the size of the prime connected set of N\n"
 	"\n"
+	"The MOVE program of this project interactively demondtrates this concept.\n"
 	"This program will calculate the value of S(N) and records it to the \"log.hex\" file\n"
 	"The \"log.hex\" file can be read by the READ program\n"
 ;

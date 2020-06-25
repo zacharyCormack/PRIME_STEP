@@ -77,7 +77,9 @@ const char* explanation =
 	"\n"
 	" Let S(N) be the size of the prime connected set of N\n"
 	"\n"
-	"This program demonstrates what a prime step is.\n"
+	"This program interactively demonstrates what a prime connection is.\n"
+	"The CALC program of this project calculates S(N) and records the prime connected set of N in the \"log.hex\" file\n"
+	"The \"log.hex\" file can be read by the READ program\n"
 ;
 
 unsigned short step(unsigned short num)

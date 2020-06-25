@@ -22,7 +22,8 @@ This project is relevant to a certain mathematical problem:
 
 The full math problem is called [Prepsosterous Primes](http://www.zacharycormack.net/challenge-of-jun-22-2020/ "zacharycormack.net")
 
-This project contains three programs: `CALC`, `READ`, and `MOVE`
+This project contains three programs: `CALC`, `READ`, and `MOVE`.
+
 `CALC` calculates the prime connected set of _N_ and S(_N_), and records it in the `log.hex` file.
 `READ` reads the `log.hex` file.
 `MOVE` illustrates what a prime step is interactively.
@@ -55,4 +56,7 @@ In fact, this program is nearly identical to the `CALC` program at it's core, wi
 
 ## LOG
 The `log.hex` file is, as can be expected, a log of all the calculations done by the `PRIME_STEP` program.
-This is kept because the `PRIME_STEP function takes a while to calculate, but it's results can be easily stored for later convenience.
+The `log.hex` file is not included in the repository.
+This is kept because the `PRIME_STEP` function takes a while to calculate, but it's results can be easily stored for later convenience.
+To read the `log.hex` file, a `READ` program is available, and converts to decimal automatically.
+The format in which the log is stored also works with all hexadecimal readers, like `xxd`, though it is less effective than the `READ` program.
