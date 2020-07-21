@@ -111,6 +111,8 @@ unsigned short step(unsigned short num)
 		c_1_ask:
 		cout << "Go to: ";
 		cin >> next;
+		if (next == 0)
+			return next;
 		if (next != num*2)
 			goto c_1_ask;
 		return num*2;
@@ -119,6 +121,8 @@ unsigned short step(unsigned short num)
 		c_2_ask:
 		cout << "Go to: ";
 		cin >> next;
+		if (next == 0)
+			return next;
 		if ((next == num-factors[0] && factors[1] != 3) || (next == num-factors[1] && factors[0] != 3))
 			return next;
 		goto c_2_ask;
@@ -127,16 +131,24 @@ unsigned short step(unsigned short num)
 		c_3_ask:
 		cout << "Go to: ";
 		cin >> next;
+		if (next == 0)
+			return next;
 		unsigned short check = 0;
 		for (unsigned short i = 0; i < factors.size(); i++)
 			if (num + factors[i] == next || num - factors[i] == next)
 				check = next / factors[i];
 		if (check == 0)
+		{
+			cout << "Invalid.\n";
 			goto c_3_ask;
+		}
 		for (unsigned short i = 0; i < 54; i++)
 		{
 			if (primes[i] == check)
+			{
+				cout << "Invalid.\n";
 				goto c_3_ask;
+			}
 			if (primes[i] > check)
 				break;
 		}
@@ -155,10 +167,9 @@ int main()
 	calc:
 	cout << "\e[1;1H\e[2J";
 	unsigned short current = start;
-	unsigned short reached[UINT16_MAX];
-	reached[0] = start;
-	unsigned short num_reached = 1;
-	unsigned timer = 0x400;
-	while(timer --> 0)
+	cout << "At any time, type '0' to exit.\n";
+	while(current != 0)
 		current = step(current);
+	cout << "\e[1;1H\e[2J";
+	return 0;
 }

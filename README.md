@@ -60,3 +60,11 @@ The `log.hex` file is not included in the repository.
 This is kept because the `PRIME_STEP` function takes a while to calculate, but it's results can be easily stored for later convenience.
 To read the `log.hex` file, a `READ` program is available, and converts to decimal automatically.
 The format in which the log is stored also works with all hexadecimal readers, like `xxd`, though it is less effective than the `READ` program.
+
+## IN USE:
+
+![CALC](CALC/example.gif "CALC")
+
+![READ](READ/example.gif "READ")
+
+![MOVE](MOVE/example.gif "MOVE")
